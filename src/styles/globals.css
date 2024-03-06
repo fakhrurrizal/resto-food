@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('/assets/font/FatheyaFood.ttf');
+@import url('/assets/font/Quesha-gndR.ttf');
+@import url('/assets/font/Poppins-Regular.ttf');
+@import url('/assets/font/Avocado.ttf');
+@import url('/assets/font/lettering.otf');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary :#ff8700
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,17 +24,76 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url('/assets/images/cover.png');
+  background-size: cover; 
+  background-position: center; 
+  background-color: rgba(255, 255, 255, 0.92); 
+  background-blend-mode: overlay;
+  --sb-track-color: #d8d8d8;
+  --sb-thumb-color: #77757d;
+  --sb-size: 7px;
+}
+
+
+body::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 10px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  body {
+      scrollbar-color: var(--sb-thumb-color)
+                     var(--sb-track-color);
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: 'FatheyaFood';
+  src: url('/assets/font/FatheyaFood.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'quesha';
+  src: url('/assets/font/Quesha-gndR.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppins';
+  src: url('/assets/font/Poppins-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'avocado';
+  src: url('/assets/font/Avocado.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'poppinsBlack';
+  src: url('/assets/font/Poppins-Black.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'lettering';
+  src: url('/assets/font/lettering.otf') format('opentype');
+}
+
+
+
+.progress-bar-primary {
+  background-color: var(--primary)
 }
