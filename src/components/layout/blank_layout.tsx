@@ -94,8 +94,8 @@ const BlankLayout = ({ children }: Props) => {
                                 <Link href="/">
                                     <span className="text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300">Order</span>
                                 </Link>
-                                <Link href="/">
-                                    <span className="text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300">Kontak</span>
+                                <Link href="/contact-us">
+                                     <span className={`text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300 ${pathname === "/contact-us" && "border-b border-white"}`}>Kontak</span>
                                 </Link>
                             </div>
                             <div className="items-center ml-auto mt-[-10px] hidden md:block">

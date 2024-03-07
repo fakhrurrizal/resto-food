@@ -26,11 +26,11 @@ const SpecialOffer = () => {
     };
 
     return (
-        <section className="relative bottom-0 py-24  left-0 w-full text-black px-5 sm:px-6 lg:px-10 bg-white p-4 block md:flex justify-between items-center">
+        <section className="relative bottom-0 py-20  left-0 w-full text-black px-5 sm:px-6 lg:px-10 bg-white p-4 block md:flex justify-between items-center">
             <div className=" parallax-bg absolute inset-0 bg-white " style={{ backgroundImage: "url('/assets/images/bg-food.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
             <Image src='/assets/images/leaf.png' width={100} height={100} alt="leaf" className="absolute left-[-10px] top-[5px]" />
             <Image src='/assets/images/cabai.png' width={100} height={100} alt="cabai" className="absolute left-[-10px] bottom-[-13px]" />
-            <div className=" items-center px-2 md:px-16 py-2 w-auto md:w-2/4">
+            <div className=" items-center px-2 md:px-16 py-2 w-auto md:w-3/5">
                 <div data-aos="fade-down" data-aos-delay="100" className=" md:mt-0">
                     <span className="font-quesha text-3xl ml-1 md:ml-2">Penawaran istimewa</span>
                 </div>
@@ -40,7 +40,7 @@ const SpecialOffer = () => {
                 <div data-aos="fade-down" data-aos-delay="300">
                     <span>Menyambuat datangnya belum suci Ramadhan! Nikmati 30% dari semua item sebagai tanda penghargaan</span>
                 </div>
-                <div className="mt-10" data-aos="fade-down" data-aos-delay="400">
+                <div className="mt-5" data-aos="fade-down" data-aos-delay="400">
                     <button className="text-md border-2 px-9 py-2 border-primary hover:bg-transparent rounded-md bg-primary text-white hover:text-primary">
                         Pesan Sekarang
                     </button>
