@@ -31,7 +31,7 @@ const Listmenu = () => {
                 </div>
                 <p className="font-lettering text-primary text-3xl mt-" data-aos="fade-down" data-aos-delay="200">Menu Makanan</p>
                 <div className="mt-3 flex flex-col items-center">
-                    <h1 className="capitalize text-[28px] md:text-[44px] font-bold" data-aos="fade-down" data-aos-delay="200">Makanan Lezat populer kami</h1>
+                    <h1 className="capitalize text-[28px] md:text-[32px] font-bold" data-aos="fade-down" data-aos-delay="200">Makanan Lezat populer kami</h1>
                     <p className="w-full md:w-3/5 text-center mt-1" data-aos="fade-down" data-aos-delay="300">memperkenalkan menu makanan kami yang menggiurkan, penuh dengan cita rasa istimewa dan kelezatan kuliner untuk memuaskan setiap selera</p>
                 </div>
 

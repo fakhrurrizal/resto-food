@@ -42,7 +42,7 @@ const SpecialDisheh = () => {
                 <div>
                     <Image src='/assets/images/leaf.png' width={50} height={100} alt="leaf" data-aos="fade-down" data-aos-delay="100" />
                     <div className="mt-4 flex justify-between">
-                        <span className="text-2xl md:text-4xl  font-bold font-poppins" data-aos="fade-down" data-aos-delay="200">Hidangan Spesial Kami</span>
+                        <span className="text-2xl md:text-[28px]  font-bold font-poppins" data-aos="fade-down" data-aos-delay="200">Hidangan Spesial Kami</span>
                         <button className="mt-2 text-md hidden rounded-md md:flex gap-4 hover:text-primary" data-aos="fade-down" data-aos-delay="200" onClick={() => route.push('/menu')}>Lihat Semua <ArrowRightIcon className="h-7 w-7 transition-opacity duration-300" /></button>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ const BlogComponent = () => {
                 <Image src='/assets/images/leaf.png' width={50} height={100} alt="leaf" data-aos="fade-down" data-aos-delay="100" />
             </div>
             <p className="font-lettering text-primary text-3xl text-center mt-2" data-aos="fade-down" data-aos-delay="200">Blog</p>
-            <p className="capitalize text-[23px] md:text-[29px] mt-1 mb-5 text-center font-bold" data-aos="fade-down" data-aos-delay="200">Tahu Lebih Banyak Tentang Artikel</p>
+            <p className="capitalize text-[23px] md:text-[29px]  mb-3 text-center font-bold" data-aos="fade-down" data-aos-delay="200">Tahu Lebih Banyak Tentang Artikel</p>
             <div className="flex justify-center gap-5 items-center mb-10 flex-col md:flex-row" data-aos="fade-down" data-aos-delay="200">
                 <div className="bg-gray-100 p-5 rounded-lg mb-5 md:mb-0">
                     <Image src="/assets/images/blog-1.png" alt="123" width={300} height={100} className="rounded-md" />
