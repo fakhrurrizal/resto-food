@@ -195,14 +195,6 @@ export const Items = [
     },
     {
       "categoryId": 3,
-      "id": 313,
-      "name": "Es Cappucino Cincau",
-      "price": 10000,
-      "qty" : 1,
-      "image" : "/assets/images/drink/es-cappucino-cincau.png"
-    },
-    {
-      "categoryId": 3,
       "id": 314,
       "name": "Es Teh Original",
       "price": 6000,
