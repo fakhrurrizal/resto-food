@@ -72,7 +72,7 @@ const SpecialDisheh = () => {
                                             <div className="font-extrabold text-md">{formatToRupiah(15)}K</div>
                                         </div>
                                         <div className="mt-5 ">
-                                            <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                            <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@ const SpecialDisheh = () => {
                                                 <div className="font-extrabold text-md">{formatToRupiah(30)}K</div>
                                             </div>
                                             <div className="mt-5 ">
-                                                <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                                <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@ const SpecialDisheh = () => {
                                                 <div className="font-extrabold text-md">{formatToRupiah(15)}K</div>
                                             </div>
                                             <div className="mt-5 ">
-                                                <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                                <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                             </div>
                                         </div>
                                     </div>
@@ -161,12 +161,12 @@ const SpecialDisheh = () => {
                                             <div className="font-extrabold text-md">{formatToRupiah(15)}K</div>
                                         </div>
                                         <div className="mt-5 ">
-                                            <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                            <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="grid md:grid-cols-2 gap-2 ">
+                            <div className="grid grid-cols-2 gap-2 ">
                                 <div
                                     data-aos="fade-down" data-aos-delay="200"
                                     className="relative rounded-2xl border-2 max-h-56 min-h-56 border-primary mb-2 overflow-hidden"
@@ -186,11 +186,11 @@ const SpecialDisheh = () => {
                                                 <StarIcon className="h-5 w-5 text-primary" />
                                             </div>
                                             <div className="flex justify-between mt-2 gap-10">
-                                                <span className="font-extrabold text-md">Nasi Ayam Bakar</span>
-                                                <div className="font-extrabold text-md">{formatToRupiah(30)}K</div>
+                                                <span className="font-extrabold text-md">Ayam Bakar</span>
+                                                <div className="font-extrabold text-md">{formatToRupiah(18)}K</div>
                                             </div>
                                             <div className="mt-5 ">
-                                                <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                                <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                             </div>
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@ const SpecialDisheh = () => {
                                                 <div className="font-extrabold text-md">{formatToRupiah(15)}K</div>
                                             </div>
                                             <div className="mt-5 ">
-                                                <button onClick={()=> route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
+                                                <button onClick={() => route.push("/menu")} className="bg-white px-5 border border-primary text-sm py-1 flex rounded-[3px] hover:bg-primary hover:text-white">Pesan </button>
                                             </div>
                                         </div>
                                     </div>
