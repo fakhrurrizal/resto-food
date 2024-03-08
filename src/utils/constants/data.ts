@@ -173,7 +173,7 @@ export const Items = [
       "categoryId": 3,
       "id": 310,
       "name": "Es Dawet Ayu",
-      "price": 90000,
+      "price": 9000,
       "qty" : 1,
       "image" : "/assets/images/drink/es-dawet-ayu.png"
     },
@@ -192,6 +192,30 @@ export const Items = [
       "price": 10000,
       "qty" : 1,
       "image" : "/assets/images/drink/es-taro-bubble.png"
+    },
+    {
+      "categoryId": 3,
+      "id": 313,
+      "name": "Es Cappucino Cincau",
+      "price": 10000,
+      "qty" : 1,
+      "image" : "/assets/images/drink/es-cappucino-cincau.png"
+    },
+    {
+      "categoryId": 3,
+      "id": 314,
+      "name": "Es Teh Original",
+      "price": 6000,
+      "qty" : 1,
+      "image" : "/assets/images/drink/es-teh-original.png"
+    },
+    {
+      "categoryId": 3,
+      "id": 315,
+      "name": "Es Oreo",
+      "price": 13000,
+      "qty" : 1,
+      "image" : "/assets/images/drink/es-oreo.png"
     },
   ]
   
