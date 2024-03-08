@@ -1,5 +1,6 @@
 
 ## Kang Fakhrur Resto
 
-![Logo](/assets/images/foto-resto.png)
+![Foto Resto](/assets/images/foto-resto.png)
+
 
