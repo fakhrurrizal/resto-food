@@ -4,6 +4,7 @@
 @import url('/assets/font/Poppins-Regular.ttf');
 @import url('/assets/font/Avocado.ttf');
 @import url('/assets/font/lettering.otf');
+@import url("./toast.min.css");
 
 
 @tailwind base;

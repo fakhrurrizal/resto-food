@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { UserProvider } from "@/UseContext/auth";
+import { CartProvider } from "@/UseContext/cartContext";
 
 
 
@@ -16,9 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
 	useEffect(() => {
 		AOS.init({ duration: 1000 });
-	  }, []);
+	}, []);
 
-	  useEffect(() => {
+	useEffect(() => {
 		const parallax = () => {
 			const bg = document.querySelector<HTMLElement>('.parallax-bg');
 			if (bg) {
@@ -59,7 +61,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
 			/>
 			<NextNProgress color="progress-bar-primary" height={3} />
-			{components}
+			<UserProvider>
+				<CartProvider>
+					{components}
+				</CartProvider>
+			</UserProvider>
 		</>
 	);
 }

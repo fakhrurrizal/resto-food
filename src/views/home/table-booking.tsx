@@ -6,13 +6,6 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { z } from "zod";
 
-type FormValues = {
-	person: number;
-	kids: number;
-	date: string;
-	time: string;
-	specialMessage: string;
-};
 
 const CustomSelect: React.FC<{ id: string, label: string, register: any, errors : any }> = ({ id, label, register, errors }) => (
 	<div className="mb-4 w-full">
@@ -27,8 +20,8 @@ const CustomSelect: React.FC<{ id: string, label: string, register: any, errors 
 );
 
 const schema = z.object({
-	person: z.number().min(1, { message: " Person harus diisi" }),
-	kids: z.number().optional(),
+	person: z.string().min(1, { message: " Person harus diisi" }),
+	kids: z.string().optional(),
 	date: z.string().min(1, { message: "Tanggal harus diisi" }),
 	time: z.string().min(1, { message: "Waktu harus diisi" }),
 	specialMessage: z.string().optional(),
@@ -45,22 +38,21 @@ const TableBooking = () => {
 	const form = useForm<MessageForm>({
 		defaultValues: {
 			date: "",
-			kids: 0,
-			person: 0,
+			kids: "",
+			person: "",
 			specialMessage: "",
 			time: ""
 		},
 		resolver: zodResolver(schema)
 	})
 
-	const { register, handleSubmit, formState: { errors },reset } = form
-
+	const { register, handleSubmit, formState: { errors },reset, watch } = form
 
 	const onSubmit = async (data: MessageForm) => {
 		const { person, kids, date, time, specialMessage } = data;
 		const emoticonHello = encodeURIComponent('👋');
 		const emoticonHeartEyes = encodeURIComponent('🥰');
-		const whatsappMessage = `Halo Kang Fakhrur ${emoticonHeartEyes}${emoticonHello} Saya ingin Booking Meja Untuk :%0APerson: ${person}%0AKids: ${kids}%0ADate: ${date}%0ATime: ${time}%0ASpecial Message: ${specialMessage}`;
+		const whatsappMessage = `Halo Kang Fakhrur ${emoticonHeartEyes} ${emoticonHello} Saya ingin Booking Meja Untuk :%0APerson: ${person}%0AKids: ${kids}%0ADate: ${date}%0ATime: ${time}%0ASpecial Message: ${specialMessage}`;
 		const whatsappLink = `https://wa.me/6287898706084?text=${whatsappMessage}`;
 
 		window.open(whatsappLink, '_blank');

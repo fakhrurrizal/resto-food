@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { EnvelopeIcon, BellAlertIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { EnvelopeIcon, BellAlertIcon, Bars3Icon, XMarkIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import ScrollToTopButton from "../ui/scroll-on-top";
+import { useAuth } from "@/UseContext/auth";
+import AvatarDropdown from "../user-dropdown";
+import { useCart } from "@/UseContext/cartContext";
+import { toast } from "react-toastify";
 
 interface Props {
     children: ReactNode;
@@ -11,6 +16,12 @@ interface Props {
 const BlankLayout = ({ children }: Props) => {
 
     const [scrollNavbar, setScrollNavbar] = useState(0);
+
+    const { user, logout } = useAuth()
+
+    const { cart } = useCart();
+
+    const route = useRouter()
 
     const [visible, setVisible] = useState(true);
 
@@ -35,7 +46,15 @@ const BlankLayout = ({ children }: Props) => {
         setIsDrawerOpen(!isDrawerOpen);
     };
 
-    const { pathname }  = useRouter()
+    const { pathname } = useRouter()
+
+    const handleOpenKeranjang = () => {
+        if (cart?.length > 0) {
+            route.push("/cart")
+        } else {
+            toast.error("Anda Belum Memilih Produk")
+        }
+    }
 
     return (
         <div className="flex flex-col min-h-screen font-poppins">
@@ -91,19 +110,28 @@ const BlankLayout = ({ children }: Props) => {
                                 <Link href="/menu">
                                     <span className={`text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300 ${pathname === "/menu" && "border-b border-white"}`}>Menu</span>
                                 </Link>
-                                <Link href="/">
-                                    <span className="text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300">Order</span>
-                                </Link>
+
                                 <Link href="/contact-us">
-                                     <span className={`text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300 ${pathname === "/contact-us" && "border-b border-white"}`}>Kontak</span>
+                                    <span className={`text-md font-poppins text-white cursor-pointer hover:border-b hover:border-white transition-all duration-300 ${pathname === "/contact-us" && "border-b border-white"}`}>Kontak</span>
                                 </Link>
                             </div>
-                            <div className="items-center ml-auto mt-[-10px] hidden md:block">
-                                <button className="border-white rounded-md border-2 px-5 py-1 text-white hover:bg-white hover:text-primary">Masuk</button>
+                            <div className="items-center ml-auto mt-[-10px] block">
+                                {user ? (
+                                    <div className="flex items-center">
+                                        <div className="relative mr-4" onClick={handleOpenKeranjang}>
+                                            <ShoppingCartIcon className="h-6 w-6 text-white cursor-pointer" />
+                                            {cart.length > 0 && <span className="bg-white text-primary rounded-full w-4 h-4 absolute -top-1 -right-1 text-xs flex items-center justify-center">{cart.length}</span>}
+                                        </div>
+                                        <AvatarDropdown username={user.username} onLogout={logout} gender={user?.gender} />
+                                    </div>
+                                ) : (
+                                    <button onClick={() => route.push('/auth/login')} className="border-white rounded-md border-2 px-5 py-1 text-white hover:bg-white hover:text-primary">Masuk</button>
+                                )}
                             </div>
-                            <div className="items-center ml-auto mt-[-10px] flex md:hidden">
+
+                            {/* <div className="items-center ml-auto mt-[-10px] flex md:hidden">
                                 <button onClick={toggleDrawer}><Bars3Icon className="h-6 w-6 text-white" /></button>
-                            </div>
+                            </div> */}
                         </div>
 
                         {isDrawerOpen && (
@@ -114,18 +142,26 @@ const BlankLayout = ({ children }: Props) => {
                                         <Link href="/">
                                             <span className="text-lg font-poppins cursor-pointer hover:border-b hover:border-white transition-all duration-300">Home</span>
                                         </Link>
-                                        <Link href="/">
+                                        <Link href="/menu">
                                             <span className="text-lg font-poppins cursor-pointer hover:border-b hover:border-white transition-all duration-300">Menu</span>
                                         </Link>
-                                        <Link href="/">
-                                            <span className="text-lg font-poppins cursor-pointer hover:border-b hover:border-white transition-all duration-300">Order</span>
-                                        </Link>
-                                        <Link href="/">
+
+                                        <Link href="/contact-us">
                                             <span className="text-lg font-poppins cursor-pointer hover:border-b hover:border-white transition-all duration-300">Kontak</span>
                                         </Link>
                                     </div>
-                                    <div className="items-center ml-auto mt-5 ">
-                                        <button className="border-primary rounded-md border-2 px-10 py-1 text-primary hover:bg-primary hover:text-white">Masuk</button>
+                                    <div className="items-center ml-auto mt-[20px]  block">
+                                        {user ? (
+                                            <div className="flex items-center">
+                                                <div className="relative mr-4" onClick={handleOpenKeranjang}>
+                                                    <ShoppingCartIcon className="h-6 w-6 text-primary cursor-pointer" />
+                                                    {cart.length > 0 && <span className="bg-primary text-primary rounded-full w-4 h-4 absolute -top-1 -right-1 text-xs flex items-center justify-center">{cart.length}</span>}
+                                                </div>
+                                                <AvatarDropdown username={user.username} onLogout={logout} gender={user?.gender} />
+                                            </div>
+                                        ) : (
+                                            <button onClick={() => route.push('/auth/login')} className="border-white rounded-md border-2 px-5 py-1 text-white hover:bg-white hover:text-primary">Masuk</button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +171,7 @@ const BlankLayout = ({ children }: Props) => {
             </header>
 
             <main className="pt-22">{children}</main>
-
+            <ScrollToTopButton />
             <footer >
                 <div className="bottom-0 pb-20 left-0 w-full mx-auto bg-cover bg-center px-5 sm:px-6 lg:px-10 bg-white p-4 block md:flex justify-between items-center" style={{ backgroundImage: "url('/assets/images/bg-wall.png')", backgroundColor: "rgba(255, 255, 255, 0.92)" }}>
                     <div className="flex items-center px-2 md:px-12 py-8 w-auto md:w-2/4">
@@ -155,7 +191,7 @@ const BlankLayout = ({ children }: Props) => {
 
                             <p className="text-black mt-4 font-semibold">Whatsapp</p>
                             <Link href="https://wasap.at/IGy1B2">
-                            <p className="text-black mt-1 ">087898706084</p>
+                                <p className="text-black mt-1 ">087898706084</p>
                             </Link>
                         </div>
                     </div>
@@ -172,13 +208,13 @@ const BlankLayout = ({ children }: Props) => {
                                 <Link href="/">
                                     <span className="text-sm font-poppins text-white cursor-pointer hover:border-b border-white transition-all duration-300">Home</span>
                                 </Link>
-                                <Link href="/">
+                                <Link href="/menu">
                                     <span className="text-sm font-poppins text-white cursor-pointer hover:border-b border-white transition-all duration-300">Menu</span>
                                 </Link>
                                 <Link href="/">
                                     <span className="text-sm font-poppins text-white cursor-pointer hover:border-b border-white transition-all duration-300">Order</span>
                                 </Link>
-                                <Link href="/">
+                                <Link href="/contact-us">
                                     <span className="text-sm font-poppins text-white cursor-pointer hover:border-b border-white transition-all duration-300">Kontak</span>
                                 </Link>
                             </div>
@@ -187,7 +223,7 @@ const BlankLayout = ({ children }: Props) => {
                     <div className="border-2 border-white w-full"></div>
                     <div className="flex flex-col items-center px-2 md:px-12 py-4 ">
                         <span className="text-sm text-white text-center cursor-pointer font-poppins border-white transition-all duration-300">© Copyright 2024 By Kang Fakhrur | Esa Unggul Jakarta Barat </span>
-                        
+
                     </div>
 
                     <div className="border-2 border-white w-full"></div>

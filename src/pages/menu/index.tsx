@@ -1,5 +1,5 @@
 import { getLayout } from "@/components/layout";
-import Listmenu from "@/views/home/list-menu";
+import Listmenu from "@/views/menu/list-menu";
 
 
 const MenuPage = () => {

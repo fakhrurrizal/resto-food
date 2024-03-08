@@ -1,9 +1,12 @@
 import ImageWithCard from "@/components/image-card"
 import { ClipboardDocumentListIcon, ShoppingCartIcon } from "@heroicons/react/24/outline"
 import Image from "next/image"
+import { useRouter } from "next/router"
 
 
 const Hero = () => {
+
+	const route = useRouter()
 
     return(
         <section className="relative bottom-0 py-16  left-0 w-full text-black px-5 sm:px-6 lg:px-10 bg-white p-4 block md:flex justify-between items-center">
@@ -15,10 +18,10 @@ const Hero = () => {
 					</div>
 					<div className="mt-16">
 						<div className="flex gap-5 font-normal " data-aos="fade-down" data-aos-delay="300">
-							<button className="flex items-center text-sm bg-primary border-2 border-primary rounded-md hover:bg-transparent text-white px-5 py-2 hover:text-primary">
+							<button onClick={()=> route.push("/menu")} className="flex items-center text-sm bg-primary border-2 border-primary rounded-md hover:bg-transparent text-white px-5 py-2 hover:text-primary">
 								<ClipboardDocumentListIcon className="h-5 w-5 mr-3 " /> Lihat Menu
 							</button>
-							<button className="flex items-center border-2 text-sm border-primary rounded-md px-6 py-1 text-primary hover:bg-primary hover:text-white">
+							<button onClick={()=> route.push("/menu")} className="flex items-center border-2 text-sm border-primary rounded-md px-6 py-1 text-primary hover:bg-primary hover:text-white">
 								<ShoppingCartIcon className="h-5 w-5 mr-3" /> Pesan
 							</button>
 						</div>

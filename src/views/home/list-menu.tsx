@@ -1,9 +1,19 @@
+import { useAuth } from "@/UseContext/auth";
+import { useCart } from "@/UseContext/cartContext";
 import { Category, Items } from "@/utils/constants/data";
 import { formatToRupiah } from "@/utils/helpers/format-number.helper";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Listmenu = () => {
+
+    const { addToCart } = useCart();
+
+    const route = useRouter()
+
+    const { user } = useAuth()
 
     const [selectedCategory, setSelectedCategory] = useState(1);
 
@@ -38,20 +48,34 @@ const Listmenu = () => {
 
                 </div>
                 <div className="flex flex-wrap gap-8  mt-10 justify-center" data-aos="fade-down" data-aos-delay="500">
-                    {DataMakanan?.length > 0 ? DataMakanan?.slice(0, 8)?.map((item, index) => (
-                        <div key={index}>
-                            <Image src={item?.image} alt={item?.name} height={230} width={230} className=" rounded-t-md" />
-                            <div className="bg-gray-200 bg-opacity-80 px-3 py-3 rounded-b-md ">
-                                <div className="flex justify-between mt-2 gap-7">
-                                    <span className="font-extrabold text-md">{item?.name}</span>
-                                    <div className="font-extrabold text-md">{formatToRupiah(item?.price).slice(0, 5).replace('.', '')}K</div>
+                    {DataMakanan?.length > 0 ? DataMakanan?.slice(0, 8)?.map((item, index) => {
+
+                        const handleCart = () => {
+                            if (!user) {
+                                toast.error("Anda Belum Masuk");
+                                setTimeout(() => {
+                                    route.push('/auth/login');
+                                }, 2000);
+                            } else {
+                                addToCart(item)
+                            }
+
+                        }
+
+                        return (
+                            <div key={index}>
+                                <Image src={item?.image} alt={item?.name} height={230} width={230} className=" rounded-t-md" />
+                                <div className="bg-gray-200 bg-opacity-80 px-3 py-3 rounded-b-md ">
+                                    <div className="flex justify-between mt-2 gap-7">
+                                        <span className="font-extrabold text-md">{item?.name}</span>
+                                        <div className="font-extrabold text-md">{formatToRupiah(item?.price).slice(0, 5).replace('.', '')}K</div>
+                                    </div>
+                                    <div className="mt-4 mb-3 ">
+                                        <button onClick={handleCart} className=" px-20 border border-primary text-sm py-[6px] flex rounded-[3px] hover:bg-transparent w-full text-white text-center bg-primary hover:text-primary">Pesan </button>
+                                    </div>
                                 </div>
-                                <div className="mt-4 mb-3 ">
-                                    <button className=" px-20 border border-primary text-sm py-[6px] flex rounded-[3px] hover:bg-transparent w-full text-white text-center bg-primary hover:text-primary">Pesan </button>
-                                </div>
-                            </div>
-                        </div>
-                    )) :
+                            </div>)
+                    }) :
                         <div className="my-10">
                             <Image src="/assets/images/data-empty.svg" alt="tes" height={230} width={230} className=" rounded-t-md" />
                             <div className=" bg-opacity-80 px-3 py-3 rounded-b-md ">
