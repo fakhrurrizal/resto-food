@@ -1,5 +1,6 @@
 import { getLayout } from "@/components/layout";
 import About from "@/views/home/about";
+import BlogComponent from "@/views/home/blog";
 import Hero from "@/views/home/hero";
 import Listmenu from "@/views/home/list-menu";
 import Profile from "@/views/home/profile";
@@ -18,6 +19,7 @@ export const Home = () => {
 			<Listmenu />
 			<TableBooking />
 			<Profile/>
+			<BlogComponent />
 		</main>
 	);
 }
