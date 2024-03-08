@@ -30,7 +30,7 @@ const ContactUsPage = () => {
     const onSubmit = (data: ContactForm) => {
         const email = 'fakhrurrizal@gmail.com';
         const subject = encodeURIComponent('Konsultasi');
-        const body = encodeURIComponent(`Nama : ${data?.name}\nNo. Telp : ${data?.name}\nEmail : ${data?.email}\n\n${data?.message}`);
+        const body = encodeURIComponent(`Nama : ${data?.name}\nNo. Telp : ${data?.phone}\nEmail : ${data?.email}\n\n${data?.message}`);
         const url = ` https://mail.google.com/mail/?view=cm&to=${email}&su=${subject}&body=${body}`;
         window.open(url, '_blank');
         reset()
