@@ -1,3 +1,4 @@
+import { useAuth } from "@/UseContext/auth";
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image"
@@ -7,7 +8,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { z } from "zod";
 
 
-const CustomSelect: React.FC<{ id: string, label: string, register: any, errors : any }> = ({ id, label, register, errors }) => (
+const CustomSelect: React.FC<{ id: string, label: string, register: any, errors: any }> = ({ id, label, register, errors }) => (
 	<div className="mb-4 w-full">
 		<label htmlFor={id} className="block text-sm font-bold mb-1">{label}</label>
 		<select id={id} {...register(id)} className="w-full border rounded-md px-3 py-2">
@@ -33,6 +34,8 @@ const TableBooking = () => {
 
 	const route = useRouter()
 
+	const user = useAuth()
+
 	const [submitting, setSubmitting] = useState<boolean>(false);
 
 	const form = useForm<MessageForm>({
@@ -46,13 +49,13 @@ const TableBooking = () => {
 		resolver: zodResolver(schema)
 	})
 
-	const { register, handleSubmit, formState: { errors },reset, watch } = form
+	const { register, handleSubmit, formState: { errors }, reset, watch } = form
 
 	const onSubmit = async (data: MessageForm) => {
 		const { person, kids, date, time, specialMessage } = data;
 		const emoticonHello = encodeURIComponent('👋');
 		const emoticonHeartEyes = encodeURIComponent('🥰');
-		const whatsappMessage = `Halo Kang Fakhrur ${emoticonHeartEyes} ${emoticonHello} Saya ingin Booking Meja Untuk :%0APerson: ${person}%0AKids: ${kids}%0ADate: ${date}%0ATime: ${time}%0ASpecial Message: ${specialMessage}`;
+		const whatsappMessage = `Halo Kang Fakhrur Saya ${user?.user?.username ? user?.user?.username : ""} ingin Booking Meja Untuk :%0ADewasa: ${person}%0AAnak anak: ${kids}%0ATanggal: ${date}%0AWaktu: ${time}%0APesan: ${specialMessage}`;
 		const whatsappLink = `https://wa.me/6287898706084?text=${whatsappMessage}`;
 
 		window.open(whatsappLink, '_blank');
@@ -70,9 +73,9 @@ const TableBooking = () => {
 						<h1 className="font-black text-3xl">Pesan meja Anda sekarang</h1>
 					</div>
 					<form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-4 mt-7">
-						<CustomSelect id="person"  errors={errors.person} label="Dewasa" register={register} />
+						<CustomSelect id="person" errors={errors.person} label="Dewasa" register={register} />
 						<CustomSelect id="kids" errors={errors.kids} label="Anak anak" register={register} />
-						
+
 						<div className="mb-4 ">
 							<label htmlFor="date" className="block text-sm font-bold mb-1">Tanggal</label>
 							<input type="date" id="date" {...register("date")} className="w-full border rounded-md px-3 py-2" />
